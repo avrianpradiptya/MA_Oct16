@@ -75,7 +75,7 @@
     <div id="answer">This is our next field trip destination - Museum Pancasila Sakti, Lobang Buaya, Pondok Gede, Jakarta.</div>
     <div class="button-container">
         <button class="button" onclick="toggleAnswer()">Reveal Answer</button>
-        <button class="button" disabled>This is Final Page</button>
+        <button class="button" onclick="goToNext()">Next Question</button>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPq4lQXII7T7fEluursxKmcdzW2u0Vkk0"></script>
     <script>
@@ -109,7 +109,7 @@
         }
 
         function goToNext() {
-            window.location.href = 'next-question.html'; // Replace with actual next page URL
+            window.location.href = 'Page7'; // Replace with actual next page URL
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
@@ -117,3 +117,4 @@
 </body>
 
 </html>
+

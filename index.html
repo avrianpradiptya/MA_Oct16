@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MA October 16, 2025</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #street-view {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Ensure map stays behind UI */
+        }
+        .overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 10; /* UI above map */
+        }
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10; /* UI above map */
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        #answer {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif; 
+            font-size: 18px;
+            display: none;
+            z-index: 10; /* UI above map */
+        }
+    </style>
+</head>
+<body>
+    <div id="street-view"></div>
+    <div class="overlay">1. Where is this location?</div>
+    <div id="answer">This is Mall of Indonesia, Kelapa Gading, Jakarta.</div>
+    <div class="button-container">
+        <button class="button" onclick="toggleAnswer()">Reveal Answer</button>
+        <button class="button" onclick="goToNext()">Next Question</button>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPq4lQXII7T7fEluursxKmcdzW2u0Vkk0"></script>
+    <script>
+        function initialize() {
+            const eiffelTower = { lat: -6.152289, lng: 106.891348 };
+            const panorama = new google.maps.StreetViewPanorama(
+                document.getElementById('street-view'),
+                {
+                    position: eiffelTower,
+                    pov: {
+                        heading: 165,
+                        pitch: 0
+                    },
+                    addressControl: false,
+                    linksControl: false,
+                    panControl: true,
+                    enableCloseButton: false,
+                    zoomControl: true,
+                    motionTracking: false,
+                    motionTrackingControl: false,
+                    clickToGo: false,
+                    scrollwheel: true,
+                    zoom: 1
+                }
+            );
+        }
+
+        function toggleAnswer() {
+            const answer = document.getElementById('answer');
+            answer.style.display = answer.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function goToNext() {
+            window.location.href = 'Page2.html'; // Replace with actual next page URL
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</body>
+</html>
